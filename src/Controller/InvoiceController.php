@@ -30,6 +30,8 @@ class InvoiceController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $this->denyAccessUnlessGranted("ROLE_INVOICE_USER");
+
         $invoice = new Invoice();
         $form = $this->createForm(InvoiceType::class, $invoice);
         $form->handleRequest($request);

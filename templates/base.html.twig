@@ -22,6 +22,24 @@
     </head>
 
     <body class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            {%  if app.user %}
+            {{ app.user.username }}
+            {% else %}
+                Anonyme
+            {%  endif %}
+        </div>
+
+        <div class="col-3">
+            {%  if app.user %}
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
+            {% else %}
+                <a href="{{ path('app_login') }}">Connexion</a>
+                <a href="{{ path('app_register') }}">Inscription</a>
+            {%  endif %}
+        </div>
+    </div>
         <div class="row justify-content-center">
             <div class="col-md-6 mt-3">
                 {% block body %}{% endblock %}
